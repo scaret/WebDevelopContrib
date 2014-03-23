@@ -3,7 +3,7 @@ function get_spreadsheet_published_content_as_array($key){
     $url = make_spreadsheet_url($key)."&output=csv";
     $content = file_get_contents($url);
     $data = array();
-    foreach(split("\n", $content) as $line){
+    foreach(explode("\n", $content) as $line){
       $data[] = str_getcsv($line);
     }
     return $data;
@@ -74,7 +74,7 @@ function render_table($data){
     $header_lines[] = str_repeat("─", $collen/2);
   }
   $head_line = "┎".join("┬", $header_lines)."┒\n";
-  $body_line = "┃".join("┼", $header_lines)."┨\n";
+  $body_line = "┠".join("┼", $header_lines)."┨\n";
   $foot_line  = "┖".join("┴", $header_lines) ."┚\n";
 
   $out .= $head_line;
@@ -94,7 +94,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, 'yoursunny-spreadsheet2sjtubbs/20140104');
-curl_setopt($ch, CURLOPT_COOKIEFILE, '');
+curl_setopt($ch, CURLOPT_COOKIEFILE, 'tmp.txt');
 
   // sign in sjtubbs
 curl_setopt($ch, CURLOPT_URL, 'https://bbs.sjtu.edu.cn/bbslogin');
