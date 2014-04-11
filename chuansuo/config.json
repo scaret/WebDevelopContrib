@@ -1,0 +1,14 @@
+{
+  "sites":[
+    {
+      "name": "饮水思源BBS",
+      "address": "bbs.sjtu.edu.cn",
+      "port": "23",
+      "protocol": "telnet"
+    },
+    {
+      "name": "饮水思源BBS电信接口",
+      "address":"bbs.sjtu.cn"
+    }
+  ]
+}
